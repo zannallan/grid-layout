@@ -1,22 +1,20 @@
 repo: 'grid-layout'
 canvasCourse: 'web-dev-2'
 
-naming: true
-restrictFileTypes: true
-liveWebsite: true
-
-git:
-  numCommits: 2
-  allCommitted: true
-  allSynced: true
+inherit:
+  - naming-restrict-live
+  - git-2
+  - html
+  - css-order-grid-main
+  - css
+  - google-fonts
+  - img-flex
+  - responsive-css
+  - screenshots-all
 
 html:
   - path: 'index.html'
-    valid: true
-    bestPractices: true
-    outline: true
     has:
-      - ['link[href*="grid.css"] + link[href*="main.css"]', 'The `grid.css` file must come before the `main.css` file.']
       - ['link[href*="Open+Sans"]', 'The Google Font, `Open Sans` (regular) is missing']
       - 'h1'
       - 'h2'
@@ -26,13 +24,6 @@ html:
       - 'dl > dd'
       - 'figure'
       - 'figure > figcaption'
-      - 'img[class~="img-flex"]'
-      - 'div[class~="grid"]'
-      - 'div[class~="unit"]'
-      - 'div[class*="xs-"]'
-      - 'div[class*="s-"]'
-      - 'div[class*="m-"]'
-      - 'div[class*="l-"]'
     has_not:
       - 'br'
     search:
@@ -46,33 +37,5 @@ html:
 
 css:
   - path: 'css/main.css'
-    valid: true
-    bestPractices: true
     has:
-      - ['html', 'box-sizing', 'border-box']
-      - ['html', 'text-size-adjust', '100%']
-      - ['html', '-moz-text-size-adjust', '100%']
-      - ['html', '-ms-text-size-adjust', '100%']
-      - ['html', '-webkit-text-size-adjust', '100%']
-      - ['*', 'box-sizing', 'inherit']
       - ['html', 'font-family', '"Open Sans", sans-serif']
-    search:
-      - '@-moz-viewport'
-      - '@-ms-viewport'
-      - '@-o-viewport'
-      - '@-webkit-viewport'
-      - '@viewport'
-    search_not:
-      - ['@media.+\(.*max-width', 'Media queries with `max-width` should not be used — use `min-width` instead']
-      - ['@media.+\(.*px', 'Pixel units should not be used in media queries — use `em` instead']
-      - ['font-size\s*:\s*.+px', 'Pixel units should not be used for `font-size` — use `rem` instead']
-
-  - path: 'css/grid.css'
-    valid: true
-    bestPractices: true
-    search:
-      - ['https://gridifier.web-dev.tools/#xs,4,0,0,0;s,4,25,0,0;m,4,38,1,1;l,4,60,1,1', 'The `grid.css` should be generated with Gridifier’s default settings']
-
-screenshots:
-  - path: 'index.html'
-    sizes: [320, 400, 608, 960, 1440]
